@@ -2,31 +2,25 @@
 
 @section('content')
 
-<h1 class="text-3xl font-bold mb-6">
-    Dashboard
-</h1>
+<x-admin.breadcrumb title="Dashboard"/>
 
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3>Total Products</h3>
-        <p class="text-3xl font-bold mt-2">0</p>
-    </div>
+    <x-admin.card
+        title="Products"
+        value="0"/>
 
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3>Total Customers</h3>
-        <p class="text-3xl font-bold mt-2">0</p>
-    </div>
+    <x-admin.card
+        title="Customers"
+        value="0"/>
 
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3>Total Suppliers</h3>
-        <p class="text-3xl font-bold mt-2">0</p>
-    </div>
+    <x-admin.card
+        title="Suppliers"
+        value="0"/>
 
-    <div class="bg-white rounded-lg shadow p-6">
-        <h3>Total Sales</h3>
-        <p class="text-3xl font-bold mt-2">0</p>
-    </div>
+    <x-admin.card
+        title="Sales"
+        value="0"/>
 
 </div>
 
