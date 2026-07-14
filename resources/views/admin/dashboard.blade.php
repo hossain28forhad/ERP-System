@@ -25,29 +25,29 @@
         title="Products"
         value="120"
         icon="📦"
-        growth="+15% This Month"/>
+        growth="+15% This Month" />
 
     <x-admin.card
         title="Customers"
         value="58"
         icon="👥"
-        growth="+8% This Month"/>
+        growth="+8% This Month" />
 
     <x-admin.card
         title="Sales"
         value="$12,500"
         icon="💰"
-        growth="+22% This Month"/>
+        growth="+22% This Month" />
 
     <x-admin.card
         title="Purchase"
         value="$8,200"
         icon="🛒"
-        growth="+5% This Month"/>
+        growth="+5% This Month" />
 
 </div>
 
-<div class="grid lg:grid-cols-3 gap-6 mt-8">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
 
     <div
         class="lg:col-span-2 bg-white rounded-xl shadow border p-6">
@@ -116,39 +116,39 @@
 
             <thead>
 
-            <tr class="bg-gray-50">
+                <tr class="bg-gray-50">
 
-                <th class="p-3 text-left">Invoice</th>
+                    <th class="p-3 text-left">Invoice</th>
 
-                <th>Status</th>
+                    <th>Status</th>
 
-                <th>Total</th>
+                    <th>Total</th>
 
-            </tr>
+                </tr>
 
             </thead>
 
             <tbody>
 
-            <tr class="border-t">
+                <tr class="border-t">
 
-                <td class="p-3">INV-001</td>
+                    <td class="p-3">INV-001</td>
 
-                <td class="text-green-600">Paid</td>
+                    <td class="text-green-600">Paid</td>
 
-                <td>$120</td>
+                    <td>$120</td>
 
-            </tr>
+                </tr>
 
-            <tr class="border-t">
+                <tr class="border-t">
 
-                <td class="p-3">INV-002</td>
+                    <td class="p-3">INV-002</td>
 
-                <td class="text-yellow-600">Pending</td>
+                    <td class="text-yellow-600">Pending</td>
 
-                <td>$350</td>
+                    <td>$350</td>
 
-            </tr>
+                </tr>
 
             </tbody>
 
@@ -206,43 +206,41 @@
 @push('scripts')
 
 <script>
+    document.addEventListener('DOMContentLoaded', function() {
 
-document.addEventListener('DOMContentLoaded',function(){
+        new ApexCharts(
 
-new ApexCharts(
+            document.querySelector("#salesChart"),
 
-document.querySelector("#salesChart"),
+            {
 
-{
+                chart: {
 
-chart:{
+                    type: 'area',
 
-type:'area',
+                    height: 320
 
-height:320
+                },
 
-},
+                series: [{
 
-series:[{
+                    name: 'Sales',
 
-name:'Sales',
+                    data: [20, 30, 45, 40, 60, 75, 90]
 
-data:[20,30,45,40,60,75,90]
+                }],
 
-}],
+                xaxis: {
 
-xaxis:{
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul']
 
-categories:['Jan','Feb','Mar','Apr','May','Jun','Jul']
+                }
 
-}
+            }
 
-}
+        ).render();
 
-).render();
-
-});
-
+    });
 </script>
 
 @endpush

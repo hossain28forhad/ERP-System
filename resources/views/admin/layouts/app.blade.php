@@ -16,28 +16,27 @@
     }"
     :class="darkMode ? 'bg-slate-900' : 'bg-gray-100'">
 
-<div class="flex">
+    <div class="flex min-h-screen">
 
-    @include('admin.layouts.sidebar')
+        @include('admin.layouts.sidebar')
 
-    <div class="flex-1 lg:ml-72">
+        <div class="flex-1 flex flex-col lg:ml-72 overflow-x-hidden">
 
-        @include('admin.layouts.navbar')
+            @include('admin.layouts.navbar')
 
-        <main class="p-6">
+            <main class="flex-1 p-6">
+                @yield('content')
+            </main>
 
-            @yield('content')
+            @include('admin.layouts.footer')
 
-        </main>
+        </div>
 
     </div>
 
-</div>
-
-    @include('admin.layouts.footer')
     @stack('scripts')
-
     <x-ui.toast />
+
 </body>
 
 </html>
