@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
 
+Route::get('/', function () {
+    return redirect()->route('login');
+});
+
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', function () {
