@@ -14,7 +14,17 @@ class UserRepository implements UserRepositoryInterface
 
     public function paginate($perPage = 10)
     {
-        return User::latest()->paginate($perPage);
+        return User::when(request('search'), function ($query) {
+
+            $query->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('email', 'like', '%' . request('search') . '%');
+        })
+
+            ->latest()
+
+            ->paginate($perPage)
+
+            ->withQueryString();
     }
 
     public function find($id): ?User

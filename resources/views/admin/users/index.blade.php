@@ -14,14 +14,13 @@
 
         <p class="text-gray-500">
 
-            Manage all system users.
+            Manage all users
 
         </p>
 
     </div>
 
-    <a
-        href="{{ route('admin.users.create') }}">
+    <a href="{{ route('admin.users.create') }}">
 
         <x-ui.button>
 
@@ -33,84 +32,111 @@
 
 </div>
 
-<x-ui.table>
+<form>
 
-    <thead>
+    <div class="flex justify-between items-center mb-5">
 
-        <tr>
+        <x-ui.search
+            placeholder="Search user..." />
 
-            <th class="p-4 text-left">Name</th>
+    </div>
 
-            <th>Email</th>
+</form>
 
-            <th>Role</th>
+<x-ui.datatable>
 
-            <th width="150">
+    <table class="min-w-full">
 
-                Action
+        <thead class="bg-gray-100">
 
-            </th>
+            <tr>
 
-        </tr>
+                <th class="p-4">
 
-    </thead>
+                    <input type="checkbox">
 
-    <tbody>
-        @forelse($users as $user)
+                </th>
 
-        <tr class="border-b">
+                <th>Name</th>
 
-            <td class="p-4">{{ $user->name }}</td>
+                <th>Email</th>
 
-            <td>{{ $user->email }}</td>
+                <th>Role</th>
 
-            <td>
+                <th width="150">
 
-                <x-ui.badge>
+                    Action
 
-                    {{ $user->roles->first()?->name }}
+                </th>
 
-                </x-ui.badge>
+            </tr>
 
-            </td>
+        </thead>
 
-            <td class="space-x-2">
+        <tbody>
 
-                <a href="{{ route('admin.users.edit', $user) }}">
-                    Edit
-                </a>
+            @forelse($users as $user)
 
-                <form
-                    action="{{ route('admin.users.destroy', $user) }}"
-                    method="POST"
-                    class="inline">
+            <tr class="border-t hover:bg-gray-50">
 
-                    @csrf
-                    @method('DELETE')
+                <td class="p-4">
 
-                    <button class="text-red-600">
-                        Delete
-                    </button>
+                    <input type="checkbox">
 
-                </form>
+                </td>
 
-            </td>
+                <td>{{ $user->name }}</td>
 
-        </tr>
+                <td>{{ $user->email }}</td>
 
-        @empty
+                <td>
 
-        <tr>
+                    <x-ui.badge>
 
-            <td colspan="4" class="p-6 text-center">
-                No users found.
-            </td>
+                        {{ $user->roles->first()?->name }}
 
-        </tr>
+                    </x-ui.badge>
 
-        @endforelse
-    </tbody>
+                </td>
 
-</x-ui.table>
+                <td>
+
+                    <a
+                        href="{{ route('admin.users.edit',$user) }}"
+                        class="text-indigo-600">
+
+                        Edit
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            @empty
+
+            <tr>
+
+                <td colspan="5">
+
+                    <x-ui.empty />
+
+                </td>
+
+            </tr>
+
+            @endforelse
+
+        </tbody>
+
+    </table>
+
+</x-ui.datatable>
+
+<div class="mt-6">
+
+    {{ $users->links() }}
+
+</div>
 
 @endsection
