@@ -96,7 +96,7 @@
                     <li>
 
                         <a
-                            href="#"
+                            href="{{ route('admin.users.index') }}"
                             class="block hover:text-indigo-400">
 
                             Users
